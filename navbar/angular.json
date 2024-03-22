@@ -18,7 +18,8 @@
             "main": "src/main.single-spa.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
+            "buildOptimizer": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -61,18 +62,18 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "navbar:build"
+            "buildTarget": "navbar:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "navbar:build:production"
+              "buildTarget": "navbar:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "navbar:build"
+            "buildTarget": "navbar:build"
           }
         },
         "test": {
@@ -120,7 +121,6 @@
       }
     }
   },
-  "defaultProject": "navbar",
   "cli": {
     "analytics": false
   }
