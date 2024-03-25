@@ -7,11 +7,11 @@
     <title>Your application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="importmap-type" content="systemjs-importmap">
-    <!-- "app1": "http://localhost:4201/main.js",
-      "app2": "http://localhost:4202/main.js", -->
     <script type="systemjs-importmap">
       {
         "imports": {
+          "app1": "http://localhost:4201/main.js",
+          "app2": "http://localhost:4202/main.js",
           "architecture-application": "http://localhost:4210/main.js",
           "getting-started-application": "http://localhost:4211/main.js",
           "bootstrapping-application": "http://localhost:4212/main.js",
@@ -35,12 +35,12 @@
           <application name="navbar"></application>
         </nav>
         <div class="main-content">
-          <!-- <route path="app1">
+          <route path="app1">
             <application name="app1"></application>
           </route>
           <route path="app2">
             <application name="app2"></application>
-          </route> -->
+          </route>
           <route path="bootstrapping-application">
             <application name="bootstrapping-application"></application>
           </route>
