@@ -18,8 +18,8 @@ const lifecycles = singleSpaAngular({
     return platformBrowserDynamic(getSingleSpaExtraProviders()).bootstrapModule(AppModule);
   },
   template: '<app1-root />',
-  Router,
-  NgZone: NgZone,
+Router,
+  NgZone,
 });
 
 export const bootstrap = lifecycles.bootstrap;
