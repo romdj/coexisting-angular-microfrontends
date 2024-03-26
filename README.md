@@ -1,76 +1,99 @@
+# Coexisting Angular Microfrontends
+
 [![Microfrontend Build](https://github.com/romdj/coexisting-angular-microfrontends/actions/workflows/build.yaml/badge.svg)](https://github.com/romdj/coexisting-angular-microfrontends/actions/workflows/build.yaml)
 
-# Coexisting Angular Microfrontends
-Demo: http://coexisting-angular-microfrontends.surge.sh
+## Overview
 
-This is a starter-kit / example repository for people who want to have multiple angular microfrontends coexist within a single page. Each
-of the angular applications was created and is managed by Angular CLI.
+This repository serves as a comprehensive example for building a micro frontend architecture using Angular. Leveraging the power of [single-spa](https://single-spa.js.org), it demonstrates how multiple Angular applications can coexist within a single page application. This approach is not limited to Angular; it allows for the inclusion of other frameworks like React or Vue, making it a versatile choice for complex projects.
 
-It uses [single-spa](https://single-spa.js.org) to pull this off, which means that you can even add React, Vue, or other frameworks as
-additional microfrontends.
+The project utilizes [single-spa-layout](https://single-spa.github.io/single-spa.js.org/docs/layout-overview/) for routing and application mapping, facilitating a structured and maintainable approach to micro frontend composition.
 
-For mapping routes to applications it uses [single-spa-layout](https://single-spa.github.io/single-spa.js.org/docs/layout-overview/).
+### Useful demo and links
 
-## An important note
-This github repository has four projects all in one repo. But when you do this yourself, **you'll want to have one git repo per
-angular application**. The root-html-file project should also be in its own repo. This is what lets different teams and developers be in
-charge of different microfrontends.
+Visit the demo at http://coexisting-angular-microfrontends.surge.sh
 
-## Local development -- one app at a time
-[Tutorial video](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4)
+### Important Note
 
-With single-spa, it is preferred to run `ng serve` in only one single-spa application at a time, while using a deployed
-version of the other applications. This makes for an awesome developer experience where you can boot up just one
-microfrontend at a time, not even having to clone, npm install, or boot up all of the other ones.
+While this repository houses multiple projects for demonstration purposes, it's recommended in real-world scenarios to maintain **one git repository per Angular application**. Similarly, the `root-html-file` project should reside in its own repository. This separation allows for decentralized development and management, enabling teams to work independently on different segments of the frontend.
 
-To try this out, clone the repo and run the following commands:
+## Local Development
+
+### Running a Single Application
+
+For an optimal development experience, it's advised to work on one single-spa application at a time. This approach requires running `ng serve` for the application you're developing, while relying on deployed versions of other applications. This setup minimizes the overhead of managing multiple services simultaneously.
+
+To start developing with a single application:
+
 ```sh
 cd app1
-npm i
+npm install --legacy-peer-deps
 npm start
 ```
 
-Now go to http://coexisting-angular-microfrontends.surge.sh in a browser. Click on the yellowish rectangle at the bottom right. Then click on `app1`. Change the module url to http://localhost:4201/main.js. Then apply the override and reload the page. This will have change app1 to load from your localhost instead of from surge.sh. As you modify the code locally, it will
-reload the page on coexisting-angular-microfrontends.surge.sh. See https://github.com/joeldenning/import-map-overrides for more info on this.
-
-## Local development -- all at once
-It is preferred to only run one app at a time. But if you need to run them all locally, you can do so with the following instructions
+### Running All Applications Locally
+Though focusing on a single app is preferred, you can run all applications locally if necessary:
 
 ```sh
-# First terminal tab
+# First terminal tab for the root config
 cd root-html-file
-npm install
+npm install --legacy-peer-deps
 npm start
 ```
 ```sh
-# Second terminal tab
+# Additional terminal tabs for each app
 cd app1
-npm install
+npm install --legacy-peer-deps
 npm start
 ```
 
 ```sh
-# Third terminal tab
+# Additional terminal tabs for each app
 cd app2
-npm install
+npm install --legacy-peer-deps
 npm start
 ```
 
 ```sh
-# Fourth terminal tab
-cd navbar
-npm install
+# Additional terminal tabs for each app
+cd architecture-application
+npm install --legacy-peer-deps
 npm start
 ```
 
-Now go to http://localhost:4200 in a browser. Note that you can change any of the ports for the projects by modifying the Import Map inside of
-root-html-file/index.html.
+```sh
+# Additional terminal tabs for each app
+cd bootstrapping-application
+npm install --legacy-peer-deps
+npm start
+```
 
-If you get serious about deploying your code, you'll want to make it no longer necessary to boot up all of the apps in order to do anything.
-When you get to that point, check out [import-map-overrides](https://github.com/joeldenning/import-map-overrides/), which lets you go to
-a deployed environment and override the [Import Map](https://github.com/WICG/import-maps) for just one microfrontend at a time. The
-import-map-overrides library is already loaded in the index.html of root-html-file, so you can start using it immediately. You can make your
-deployed environment overridable, just like you can do overrides on http://coexisting-angular-microfrontends.surge.sh
+```sh
+# Additional terminal tabs for each app
+cd getting-started-application
+npm install --legacy-peer-deps
+npm start
+```
 
-## More documentation
-Go to https://github.com/CanopyTax/single-spa-angular to learn how all of this works.
+Repeat the steps for any remaining application (each in its own terminal tab) here is the list covered so far:
+- app1 (http://localhost:4221)
+- app2 (http://localhost:4222)
+- architecture-application (http://localhost:4210)
+- bootstrapping-application (http://localhost:4211)
+- getting-started-application (http://localhost:4212)
+
+Finally, you can conclude by operating the same in navbar (http://localhost:4300).
+
+```sh
+# Additional terminal tabs for each app
+cd navbar
+npm install --legacy-peer-deps
+npm start
+```
+
+Now that all applications are running, navigate to [http://localhost:4200](http://localhost:4200) to view the combined application. Adjustments to port numbers can be made in the root-html-file/index.html's Import Map for custom configurations.
+
+## Deployment and Overrides
+For production, it's crucial to set up your deployment to allow individual micro frontends to be updated without redeploying the entire application. Utilizing import-map-overrides, you can modify the Import Map in a live environment to test changes to a single micro frontend. This feature is already integrated into the root-html-file/index.html, enabling immediate use.
+
+## Additional Documentation
+To dive deeper into integrating Angular applications with single-spa, visit [single-spa-angular](https://github.com/single-spa/single-spa-angular).
