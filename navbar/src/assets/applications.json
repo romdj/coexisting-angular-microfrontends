@@ -1,0 +1,27 @@
+[
+  {
+    "name": "app1",
+    "appURL": "http://localhost:4221/main.js",
+    "route": "/app1"
+  },
+  {
+    "name": "app2",
+    "appURL": "http://localhost:4222/singleSpaEntry.js",
+    "route": "/app2"
+  },
+  {
+    "name": "architecture-application",
+    "appURL": "http://localhost:4210/main.js",
+    "route": "/architecture-application"
+  },
+  {
+    "name": "bootstrapping-application",
+    "appURL": "http://localhost:4211/main.js",
+    "route": "/bootstrapping-application"
+  },
+  {
+    "name": "getting-started-application",
+    "appURL": "http://localhost:4212/main.js",
+    "route": "/getting-started-application"
+  }
+]
