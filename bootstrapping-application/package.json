@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4212",
+    "start": "npm run serve:single-spa:bootstrapping-application",
+    "start:old": "ng serve --port 4212",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
